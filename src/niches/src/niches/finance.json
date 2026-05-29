@@ -1,0 +1,22 @@
+{
+  "niche": "finance",
+  "hook_style": "shock_opportunity",
+  "opening_pattern": "painful_truth",
+  "pacing": [
+    "problem",
+    "insight",
+    "proof",
+    "strategy",
+    "action"
+  ],
+  "retention_triggers": [
+    "numbered_framework",
+    "specific_examples",
+    "contrarian_reveal",
+    "future_outcome"
+  ],
+  "voice": "authoritative",
+  "visual_style": "clean_professional",
+  "music_style": "modern_corporate",
+  "cta": "Would you use this strategy?"
+}
