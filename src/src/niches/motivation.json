@@ -1,0 +1,22 @@
+{
+  "niche": "motivation",
+  "hook_style": "identity_challenge",
+  "opening_pattern": "direct_confrontation",
+  "pacing": [
+    "pain",
+    "reflection",
+    "awakening",
+    "empowerment",
+    "challenge"
+  ],
+  "retention_triggers": [
+    "identity_reframe",
+    "emotional_build",
+    "personal_challenge",
+    "future_visualization"
+  ],
+  "voice": "bold_commanding",
+  "visual_style": "cinematic_inspirational",
+  "music_style": "epic_build",
+  "cta": "Will you take action today?"
+}
