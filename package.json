@@ -1,14 +1,13 @@
 {
   "name": "vyreel",
   "version": "1.0.0",
-  "description": "Long-form AI video generation SaaS",
-  "main": "dist/app.js",
+  "description": "Vyreel backend",
+  "main": "src/server.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node src/server.js"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "typescript": "^5.5.0"
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
   }
 }
