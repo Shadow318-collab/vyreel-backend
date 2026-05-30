@@ -21,22 +21,47 @@ app.get("/api/trends", (req, res) => {
 
   const trendMap = {
     motivation: [
-      { topic: "Discipline beats motivation", viralScore: 96 },
-      { topic: "Morning routines of winners", viralScore: 93 },
-      { topic: "Dopamine detox challenge", viralScore: 91 }
+      {
+        topic: "Discipline beats motivation",
+        viralScore: 96,
+        hook: "Nobody tells you discipline is more important than motivation"
+      },
+      {
+        topic: "Morning routines of winners",
+        viralScore: 93,
+        hook: "I copied millionaire morning habits for 7 days"
+      }
     ],
     finance: [
-      { topic: "AI side hustles", viralScore: 95 },
-      { topic: "How to make your first $1k online", viralScore: 92 },
-      { topic: "Passive income systems", viralScore: 90 }
+      {
+        topic: "AI side hustles",
+        viralScore: 95,
+        hook: "3 AI side hustles that can make your first $1k"
+      },
+      {
+        topic: "Passive income systems",
+        viralScore: 91,
+        hook: "How beginners build passive income in 2026"
+      }
     ],
     business: [
-      { topic: "Scaling with AI automation", viralScore: 94 },
-      { topic: "Client acquisition systems", viralScore: 91 },
-      { topic: "High-ticket offer creation", viralScore: 89 }
+      {
+        topic: "Client acquisition systems",
+        viralScore: 94,
+        hook: "How smart founders get clients without chasing"
+      },
+      {
+        topic: "Scaling with AI automation",
+        viralScore: 92,
+        hook: "AI systems replacing entire business teams"
+      }
     ],
     general: [
-      { topic: "Trending viral content", viralScore: 88 }
+      {
+        topic: "Viral content ideas",
+        viralScore: 85,
+        hook: "The content strategy creators are using right now"
+      }
     ]
   };
 
