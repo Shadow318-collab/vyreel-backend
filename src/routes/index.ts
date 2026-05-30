@@ -1,0 +1,20 @@
+import { Router } from "express";
+import healthRouter from "./health.js";
+import scriptRouter from "./script.js";
+import voiceRouter from "./voice.js";
+import brollRouter from "./broll.js";
+import musicRouter from "./music.js";
+import authRouter from "./auth.js";
+import stripeRouter from "./stripe.js";
+import projectsRouter from "./projects.js";
+
+const router = Router();
+router.use(healthRouter);
+router.use(scriptRouter);
+router.use(voiceRouter);
+router.use(brollRouter);
+router.use(musicRouter);
+router.use(authRouter);
+router.use(stripeRouter);
+router.use(projectsRouter);
+export default router;
