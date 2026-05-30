@@ -1,7 +1,6 @@
 {
   "name": "vyreel",
   "version": "1.0.0",
-  "description": "Vyreel backend",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js"
