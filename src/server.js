@@ -16,6 +16,26 @@ app.get("/health", (req, res) => {
   });
 });
 
+app.get("/api/trends", (req, res) => {
+  res.json({
+    niche: "content creation",
+    trends: [
+      {
+        topic: "AI side hustles",
+        viralScore: 94
+      },
+      {
+        topic: "Faceless YouTube automation",
+        viralScore: 91
+      },
+      {
+        topic: "How creators use AI for passive income",
+        viralScore: 89
+      }
+    ]
+  });
+});
+
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, function () {
