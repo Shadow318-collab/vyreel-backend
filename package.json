@@ -1,0 +1,13 @@
+{
+  "name": "vyreel",
+  "version": "1.0.0",
+  "description": "AI long-form video generation SaaS",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/app.ts"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}￼Enter
