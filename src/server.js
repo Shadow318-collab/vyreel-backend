@@ -1,73 +1,27 @@
-const express = require('express');
-const cors = require('cors');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const rateLimit = require('express-rate-limit');
-const { createClient } = require('@supabase/supabase-js');
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY
-);
-
-const JWT_SECRET = process.env.JWT_SECRET || 'vyreel2026secret';
-const GEMINI_KEY = process.env.ANTHROPIC_API_KEY;
-const EL_KEY = process.env.ELEVENLABS_API_KEY;
-const PEXELS_KEY = process.env.PEXELS_API_KEY;
-const PIXABAY_KEY = process.env.PIXABAY_API_KEY;
-
-app.use(cors({ origin: '*' }));
+app.use(cors());
 app.use(express.json());
-app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 
-// Health
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'VYREEL API', timestamp: new Date().toISOString() });
+app.get("/", (req, res) => {
+  res.send("Vyreel backend is live");
 });
 
-// Script
-app.post('/api/script', async (req, res) => {
-  const { topic, niche, tone, platform, duration } = req.body;
-  if (!topic) return res.status(400).json({ error: 'Missing topic' });
-  try {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: `Write a ${duration}-min viral video script for: "${topic}"\nPlatform: ${platform} | Niche: ${niche} | Tone: ${tone}\n\nUse sections: 🎬 HOOK, 📖 SETUP, 🔥 ACT 1, 🔥 ACT 2, 🔥 ACT 3, 💡 KEY INSIGHT, 📣 CTA\nInclude [VISUAL CUE] notes.` }] }],
-        generationConfig: { maxOutputTokens: 2048, temperature: 0.7 }
-      })
-    });
-    const d = await r.json();
-    const script = d?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    if (!script) return res.status(500).json({ error: 'Empty response' });
-    res.json({ script });
-  } catch (e) { res.status(500).json({ error: e.message }); }
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    app: "Vyreel"
+  });
 });
 
-// Voice
-app.post('/api/voice', async (req, res) => {
-  const { text, voiceId } = req.body;
-  if (!text || !voiceId) return res.status(400).json({ error: 'Missing text or voiceId' });
-  try {
-    const r = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`, {
-      method: 'POST',
-      headers: { 'xi-api-key': EL_KEY, 'Content-Type': 'application/json', Accept: 'audio/mpeg' },
-      body: JSON.stringify({ text, model_id: 'eleven_monolingual_v1', voice_settings: { stability: 0.5, similarity_boost: 0.75 } })
-    });
-    if (!r.ok) return res.status(r.status).json({ error: 'ElevenLabs error' });
-    const buf = await r.arrayBuffer();
-    res.set('Content-Type', 'audio/mpeg');
-    res.send(Buffer.from(buf));
-  } catch (e) { res.status(500).json({ error: e.message }); }
-});
+const PORT = process.env.PORT || 10000;
 
-// Broll
-app.get('/api/broll', async (req, res) => {
-  const { query, type = 'videos', source = 'pexels', perPage = 9 } = req.query;
+app.listen(PORT, () => {
+  console.log(`VYREEL API running on port ${PORT}`);
+});  const { query, type = 'videos', source = 'pexels', perPage = 9 } = req.query;
   if (!query) return res.status(400).json({ error: 'Missing query' });
   try {
     if (source === 'pexels') {
