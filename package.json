@@ -1,0 +1,9 @@
+{
+  "name": "vyreel",
+  "version": "1.0.0",
+  "description": "Long-form AI video generation SaaS",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "node src/app.ts"
+  }
+}
